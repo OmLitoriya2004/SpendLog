@@ -9,7 +9,8 @@ const authRoutes = require("./routes/authRoutes.js");
 const incomeRoutes = require("./routes/IncomeRoutes.js");
 const expenseRoutes = require("./routes/expenseRoutes.js");
 const dashboardRoutes = require("./routes/dashboardRoutes.js");
-
+const frontendPath = path.join(__dirname, "client");
+app.use(express.static(frontendPath));
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "*",
@@ -26,6 +27,9 @@ app.use("/api/expense", expenseRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.get(/^(?!\/api).+/, (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
