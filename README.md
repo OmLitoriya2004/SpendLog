@@ -4,7 +4,7 @@ SpendLog is a full-stack MERN (MongoDB, Express.js, React, Node.js) web applicat
 <img width="1849" height="972" alt="image" src="https://github.com/user-attachments/assets/c57e9ee6-78c0-41a9-b4ab-8228473e0dc8" />
 
 ---
-
+### 🔗 Live Site: [https://spendlog-frontend.pages.dev](https://spendlog-frontend.pages.dev)
 ## 🚀 Features
 
 - 🔐 User Authentication (JWT-based)
@@ -42,4 +42,29 @@ frontend/viteproj/
 ├── .env.production # Vite production environment variables
 ├── vite.config.js # Vite configuration
 └── package.json # Frontend dependencies & scripts
+```
+
+
+---
+
+## 🌐 Deployment Guide
+
+### ✅ 1. Build Frontend
+
+```bash
+cd frontend/viteproj
+npm install
+npm run build
+```
+###✅ 2. Replace old frontend build (if any)
+```bash
+Remove-Item -Recurse -Force ../../backend/client/*
+Copy-Item -Recurse -Force dist/* ../../backend/client/
+```
+
+### ✅ 3.Run Backend Server
+```bash
+cd backend
+npm install
+node server.js
 ```
